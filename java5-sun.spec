@@ -1,6 +1,4 @@
 # TODO:
-# - better way to choose preferred jvm (currently the symlinks are hardcoded)
-#   Maybe a package containing only the symlinks?
 # - package? /usr/lib/jvm/java-sun-1.5.0.12/jre/lib/deploy/ffjcext.zip
 #
 %define		_ver	1.5.0.19
@@ -10,7 +8,7 @@
 %define		_classdataversion 49.0
 %include	/usr/lib/rpm/macros.java
 Summary:	Sun JDK (Java Development Kit) for Linux
-Summary(pl):	Sun JDK - ∂rodowisko programistyczne Javy dla Linuksa
+Summary(pl.UTF-8):	Sun JDK - ≈õrodowisko programistyczne Javy dla Linuksa
 Name:		java5-sun
 Version:	%{_ver}
 Release:	1
@@ -30,8 +28,7 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	unzip
 Requires:	%{name}-jre = %{version}-%{release}
-Requires:	java-shared
-Requires:	jpackage-utils >= 0:1.6.6-5
+Requires:	%{name}-jdk-base = %{version}-%{release}
 Provides:	j2sdk = %{version}
 Provides:	jdk = %{version}
 Obsoletes:	blackdown-java-sdk
@@ -60,26 +57,39 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Java Development Kit for Linux.
 
-%description -l pl
-¶rodowisko programistyczne Javy dla Linuksa.
+%description -l pl.UTF-8
+≈örodowisko programistyczne Javy dla Linuksa.
 
 %package appletviewer
 Summary:	Java applet viewer from Sun Java
-Summary(pl):	Przegl±darka appletÛw Javy Suna
+Summary(pl.UTF-8):	PrzeglƒÖdarka applet√≥w Javy Suna
 Group:		Development/Languages/Java
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-jdk-base = %{version}-%{release}
 
 %description appletviewer
 This package applet viewer for Sun Java.
 
-%description appletviewer -l pl
-Ten pakiet zawiera przegl±darkÍ appletÛw dla Javy Suna.
+%description appletviewer -l pl.UTF-8
+Ten pakiet zawiera przeglƒÖdarkƒô applet√≥w dla Javy Suna.
+
+%package jdk-base
+Summary:	Sun JDK (Java Development Kit) for Linux
+Summary(pl.UTF-8):	Sun JDK - ≈õrodowisko programistyczne Javy dla Linuksa
+Group:		Development/Languages/Java
+Requires:	%{name}-tools = %{version}-%{release}
+Requires:	jpackage-utils >= 0:1.6.6-14
+
+%description jdk-base
+Java Development Kit for Linux.
+
+%description jdk-base -l pl.UTF-8
+≈örodowisko programistyczne Javy dla Linuksa.
 
 %package jre-jdbc
 Summary:	JDBC files for Sun Java
-Summary(pl):	Pliki JDBC dla Javy Suna
+Summary(pl.UTF-8):	Pliki JDBC dla Javy Suna
 Group:		Development/Languages/Java
-Requires:	%{name}-jre = %{version}-%{release}
+Requires:	%{name}-jre-base = %{version}-%{release}
 %ifarch %{x8664}
 Requires:	libodbc.so.1()(64bit)
 Requires:	libodbcinst.so.1()(64bit)
@@ -93,14 +103,15 @@ Obsoletes:	java-sun-jdbc
 %description jre-jdbc
 This package contains JDBC files for Sun Java.
 
-%description jre-jdbc -l pl
+%description jre-jdbc -l pl.UTF-8
 Ten pakiet zawiera pliki JDBC dla Javy Suna.
 
 %package jre
 Summary:	Sun JRE (Java Runtime Environment) for Linux
-Summary(pl):	Sun JRE - ∂rodowisko uruchomieniowe Javy dla Linuksa
+Summary(pl.UTF-8):	Sun JRE - ≈õrodowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
-Requires:	java-jre-tools
+Requires:	%{name}-tools = %{version}-%{release}
+Requires:	%{name}-jre-base = %{version}-%{release}
 Requires:	jpackage-utils
 Provides:	j2re = %{version}
 Provides:	jaas = %{version}
@@ -134,20 +145,36 @@ Obsoletes:	jndi-provider-ldap
 Obsoletes:	jndi-provider-rmiregistry
 Obsoletes:	jre
 Obsoletes:	jsse
+Suggests:	%{name}-X11
 
 %description jre
 Java Runtime Environment for Linux. Does not contain any X11-related
 compontents.
 
-%description jre -l pl
-¶rodowisko uruchomieniowe Javy dla Linuksa. Nie zawiera øadnych
-elementÛw zwi±zanych ze ∂rodowiskiem X11.
+%description jre -l pl.UTF-8
+≈örodowisko uruchomieniowe Javy dla Linuksa. Nie zawiera ≈ºadnych
+element√≥w zwiƒÖzanych ze ≈õrodowiskiem X11.
+
+%package jre-base
+Summary:	Sun JRE (Java Runtime Environment) for Linux
+Summary(pl.UTF-8):	Sun JRE - ≈õrodowisko uruchomieniowe Javy dla Linuksa
+Group:		Development/Languages/Java
+Requires:	jpackage-utils >= 0:1.6.6-14
+
+%description jre-base
+Java Runtime Environment for Linux. Does not contain any X11-related
+compontents.
+
+%description jre-base -l pl.UTF-8
+≈örodowisko uruchomieniowe Javy dla Linuksa. Nie zawiera ≈ºadnych
+element√≥w zwiƒÖzanych ze ≈õrodowiskiem X11.
 
 %package jre-X11
 Summary:	Sun JRE (Java Runtime Environment) for Linux, X11 related parts
-Summary(pl):	Sun JRE - ∂rodowisko uruchomieniowe Javy dla Linuksa, czÍ∂ci korzystaj±ce z X11
+Summary(pl.UTF-8):	Sun JRE - ≈õrodowisko uruchomieniowe Javy dla Linuksa, czƒô≈õci korzystajƒÖce z X11
 Group:		Development/Languages/Java
-Requires:	%{name}-jre = %{version}-%{release}
+Requires:	%{name}-jre-base = %{version}-%{release}
+Requires:	%{name}-jre-base-X11 = %{version}-%{release}
 Provides:	jre-X11 = %{version}
 %ifarch %{ix86}
 Provides:	javaws = %{version}
@@ -156,62 +183,71 @@ Provides:	javaws = %{version}
 %description jre-X11
 X11-related part of Java Runtime Environment for Linux.
 
-%description jre-X11 -l pl
-¶rodowisko uruchomieniowe Javy dla Linuksa, czÍ∂Ê zwi±zana ze
-∂rodowiskiem graficznym X11.
+%description jre-X11 -l pl.UTF-8
+≈örodowisko uruchomieniowe Javy dla Linuksa, czƒô≈õƒá zwiƒÖzana ze
+≈õrodowiskiem graficznym X11.
+
+%package jre-base-X11
+Summary:	Sun JRE (Java Runtime Environment) for Linux, X11 related parts
+Summary(pl.UTF-8):	Sun JRE - ≈õrodowisko uruchomieniowe Javy dla Linuksa, czƒô≈õci korzystajƒÖce z X11
+Group:		Development/Languages/Java
+Requires:	%{name}-jre-base = %{version}-%{release}
+
+%description jre-base-X11
+X11-related part of Java Runtime Environment for Linux.
+
+%description jre-base-X11 -l pl.UTF-8
+≈örodowisko uruchomieniowe Javy dla Linuksa, czƒô≈õƒá zwiƒÖzana ze
+≈õrodowiskiem graficznym X11.
 
 %package jre-alsa
 Summary:	JRE module for ALSA sound support
-Summary(pl):	Modu≥ JRE do obs≥ugi dºwiÍku poprzez ALSA
+Summary(pl.UTF-8):	Modu≈Ç JRE do obs≈Çugi d≈∫wiƒôku poprzez ALSA
 Group:		Development/Languages/Java
-Requires:	%{name}-jre = %{version}-%{release}
+Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	%{name}-alsa
 Obsoletes:	java-sun-alsa
 
 %description jre-alsa
 JRE module for ALSA sound support.
 
-%description jre-alsa -l pl
-Modu≥ JRE do obs≥ugi dºwiÍku poprzez ALSA.
+%description jre-alsa -l pl.UTF-8
+Modu≈Ç JRE do obs≈Çugi d≈∫wiƒôku poprzez ALSA.
 
 %package tools
 Summary:	Shared Java tools
-Summary(pl):	WspÛ≥dzielone narzÍdzia Javy
+Summary(pl.UTF-8):	Wsp√≥≈Çdzielone narzƒôdzia Javy
 Group:		Development/Languages/Java
-Requires:	%{name}-jre = %{version}-%{release}
+Requires:	%{name}-jre-base = %{version}-%{release}
 Provides:	jar
 Provides:	java-jre-tools
-Provides:	java-shared
 Obsoletes:	fastjar
 Obsoletes:	jar
 Obsoletes:	java-jre-tools
-Obsoletes:	java-shared
 
 %description tools
 This package contains tools that are common for every Java(TM)
 implementation, such as rmic or jar.
 
-%description tools -l pl
-Pakiet ten zawiera narzÍdzia wspÛlne dla kaødej implementacji
+%description tools -l pl.UTF-8
+Pakiet ten zawiera narzƒôdzia wsp√≥lne dla ka≈ºdej implementacji
 Javy(TM), takie jak rmic czy jar.
 
 %package demos
 Summary:	JDK demonstration programs
-Summary(pl):	Programy demonstracyjne do JDK
+Summary(pl.UTF-8):	Programy demonstracyjne do JDK
 Group:		Development/Languages/Java
-Requires:	%{name}-jre = %{version}-%{release}
-Obsoletes:	java-blackdown-demos
-Obsoletes:	jdk-demos
+Requires:	jre
 
 %description demos
 JDK demonstration programs.
 
-%description demos -l pl
+%description demos -l pl.UTF-8
 Programy demonstracyjne do JDK.
 
 %package -n browser-plugin-%{name}
 Summary:	Java plugin for WWW browsers
-Summary(pl):	Wtyczki Javy do przegl±darek WWW
+Summary(pl.UTF-8):	Wtyczki Javy do przeglƒÖdarek WWW
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-X11 = %{version}-%{release}
 Requires:	browser-plugins >= 2.0
@@ -238,20 +274,20 @@ Obsoletes:	mozilla-plugin-java-sun
 %description -n browser-plugin-%{name}
 Java plugin for WWW browsers.
 
-%description -n browser-plugin-%{name} -l pl
-Wtyczki z obs≥ug± Javy dla przegl±darek WWW.
+%description -n browser-plugin-%{name} -l pl.UTF-8
+Wtyczki z obs≈ÇugƒÖ Javy dla przeglƒÖdarek WWW.
 
 %package sources
-Summary:	JDK sources
-Summary(pl):	¨rÛd≥a JDK
+Summary:	JRE standard library sources
+Summary(pl.UTF-8):	≈πr√≥d≈Ça standardowej biblioteki JRE
 Group:		Development/Languages/Java
 Requires:	%{name}-jre = %{version}-%{release}
 
 %description sources
-Sources for package JDK.
+Sources for the standard Java library.
 
-%description sources -l pl
-¨rÛd≥a dla pakietu JDK.
+%description sources -l pl.UTF-8
+≈πr√≥d≈Ça standardowej bilioteki Java.
 
 %prep
 %setup -q -T -c -n jdk%{_dir_ver}
@@ -431,45 +467,6 @@ fi
 %attr(755,root,root) %{_bindir}/jstatd
 %attr(755,root,root) %{_bindir}/native2ascii
 %attr(755,root,root) %{_bindir}/serialver
-%ifarch %{ix86}
-%attr(755,root,root) %{javadir}/bin/HtmlConverter
-%attr(755,root,root) %{javadir}/bin/ControlPanel
-%attr(755,root,root) %{javadir}/bin/java-rmi.cgi
-%attr(755,root,root) %{javadir}/bin/javaws
-%endif
-%attr(755,root,root) %{javadir}/bin/apt
-%attr(755,root,root) %{javadir}/bin/extcheck
-%attr(755,root,root) %{javadir}/bin/idlj
-%attr(755,root,root) %{javadir}/bin/jarsigner
-%attr(755,root,root) %{javadir}/bin/javac
-%attr(755,root,root) %{javadir}/bin/javadoc
-%attr(755,root,root) %{javadir}/bin/javah
-%attr(755,root,root) %{javadir}/bin/javap
-%attr(755,root,root) %{javadir}/bin/jconsole
-%attr(755,root,root) %{javadir}/bin/jdb
-%attr(755,root,root) %{javadir}/bin/jinfo
-%attr(755,root,root) %{javadir}/bin/jmap
-%attr(755,root,root) %{javadir}/bin/jps
-%attr(755,root,root) %{javadir}/bin/jsadebugd
-%attr(755,root,root) %{javadir}/bin/jstack
-%attr(755,root,root) %{javadir}/bin/jstat
-%attr(755,root,root) %{javadir}/bin/jstatd
-%attr(755,root,root) %{javadir}/bin/keytool
-%attr(755,root,root) %{javadir}/bin/kinit
-%attr(755,root,root) %{javadir}/bin/klist
-%attr(755,root,root) %{javadir}/bin/ktab
-%attr(755,root,root) %{javadir}/bin/native2ascii
-%attr(755,root,root) %{javadir}/bin/orbd
-%attr(755,root,root) %{javadir}/bin/policytool
-%attr(755,root,root) %{javadir}/bin/rmid
-%attr(755,root,root) %{javadir}/bin/rmiregistry
-%attr(755,root,root) %{javadir}/bin/serialver
-%attr(755,root,root) %{javadir}/bin/servertool
-%attr(755,root,root) %{javadir}/bin/tnameserv
-%{javadir}/include
-%dir %{javadir}/lib
-%{javadir}/lib/*.jar
-%{javadir}/lib/*.idl
 %{_mandir}/man1/apt.1*
 %{_mandir}/man1/extcheck.1*
 %{_mandir}/man1/idlj.1*
@@ -509,6 +506,48 @@ fi
 %lang(ja) %{_mandir}/ja/man1/serialver.1*
 %lang(ja) %{_mandir}/ja/man1/jconsole.1*
 
+%files jdk-base
+%defattr(644,root,root,755)
+%ifarch %{ix86}
+%attr(755,root,root) %{javadir}/bin/HtmlConverter
+%attr(755,root,root) %{javadir}/bin/ControlPanel
+%attr(755,root,root) %{javadir}/bin/java-rmi.cgi
+%attr(755,root,root) %{javadir}/bin/javaws
+%endif
+%attr(755,root,root) %{javadir}/bin/apt
+%attr(755,root,root) %{javadir}/bin/extcheck
+%attr(755,root,root) %{javadir}/bin/idlj
+%attr(755,root,root) %{javadir}/bin/jarsigner
+%attr(755,root,root) %{javadir}/bin/javac
+%attr(755,root,root) %{javadir}/bin/javadoc
+%attr(755,root,root) %{javadir}/bin/javah
+%attr(755,root,root) %{javadir}/bin/javap
+%attr(755,root,root) %{javadir}/bin/jconsole
+%attr(755,root,root) %{javadir}/bin/jdb
+%attr(755,root,root) %{javadir}/bin/jinfo
+%attr(755,root,root) %{javadir}/bin/jmap
+%attr(755,root,root) %{javadir}/bin/jps
+%attr(755,root,root) %{javadir}/bin/jsadebugd
+%attr(755,root,root) %{javadir}/bin/jstack
+%attr(755,root,root) %{javadir}/bin/jstat
+%attr(755,root,root) %{javadir}/bin/jstatd
+%attr(755,root,root) %{javadir}/bin/keytool
+%attr(755,root,root) %{javadir}/bin/kinit
+%attr(755,root,root) %{javadir}/bin/klist
+%attr(755,root,root) %{javadir}/bin/ktab
+%attr(755,root,root) %{javadir}/bin/native2ascii
+%attr(755,root,root) %{javadir}/bin/orbd
+%attr(755,root,root) %{javadir}/bin/policytool
+%attr(755,root,root) %{javadir}/bin/rmid
+%attr(755,root,root) %{javadir}/bin/rmiregistry
+%attr(755,root,root) %{javadir}/bin/serialver
+%attr(755,root,root) %{javadir}/bin/servertool
+%attr(755,root,root) %{javadir}/bin/tnameserv
+%{javadir}/include
+%dir %{javadir}/lib
+%{javadir}/lib/*.jar
+%{javadir}/lib/*.idl
+
 %files appletviewer
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/appletviewer
@@ -525,10 +564,8 @@ fi
 %attr(755,root,root) %{jredir}/lib/amd64/libJdbcOdbc.so
 %endif
 
-%files jre
+%files jre-base
 %defattr(644,root,root,755)
-%doc jre/{CHANGES,COPYRIGHT,LICENSE,README,*.txt}
-%doc jre/Welcome.html
 %{_jvmdir}/jre
 %{_jvmjardir}/jre
 %attr(755,root,root) %{_bindir}/java
@@ -649,6 +686,12 @@ fi
 %{jredir}/lib/management/jmxremote.password.template
 %{jredir}/lib/management/management.properties
 %{jredir}/lib/management/snmp.acl.template
+
+%files jre
+%defattr(644,root,root,755)
+%doc jre/{CHANGES,COPYRIGHT,LICENSE,README,*.txt}
+%doc jre/Welcome.html
+%doc jre/Xusage*
 %{_mandir}/man1/java.1*
 %ifarch %{ix86}
 %{_desktopdir}/sun_java.desktop
@@ -675,13 +718,8 @@ fi
 %lang(ja) %{_mandir}/ja/man1/servertool.1*
 %lang(ja) %{_mandir}/ja/man1/tnameserv.1*
 
-%files jre-X11
+%files jre-base-X11
 %defattr(644,root,root,755)
-%ifarch %{ix86}
-%doc jre/Xusage*
-%attr(755,root,root) %{_bindir}/ControlPanel
-%endif
-%attr(755,root,root) %{_bindir}/policytool
 %ifarch %{ix86}
 %attr(755,root,root) %{jredir}/bin/javaws
 %attr(755,root,root) %{jredir}/bin/ControlPanel
@@ -707,7 +745,6 @@ fi
 %ifarch %{ix86}
 %{jvmjardir}/javaws.jar
 %endif
-%ifarch %{ix86}
 %attr(755,root,root) %{jredir}/lib/i386/motif21/libmawt.so
 %attr(755,root,root) %{jredir}/lib/i386/xawt/libmawt.so
 %dir %{jredir}/lib/javaws
@@ -724,6 +761,23 @@ fi
 %{jredir}/lib/javaws/messages_zh_HK.properties
 %{jredir}/lib/javaws/messages_zh_TW.properties
 %{jredir}/lib/javaws/miniSplash.jpg
+%ifarch %{x8664}
+%attr(755,root,root) %{jredir}/lib/amd64/motif21/libmawt.so
+%attr(755,root,root) %{jredir}/lib/amd64/xawt/libmawt.so
+%endif
+%ifarch %{ix86}
+%dir %{jredir}/javaws
+%attr(755,root,root) %{jredir}/javaws/javaws
+%endif
+
+%files jre-X11
+%defattr(644,root,root,755)
+%ifarch %{ix86}
+%attr(755,root,root) %{_bindir}/ControlPanel
+%endif
+%attr(755,root,root) %{_bindir}/policytool
+%{_mandir}/man1/policytool.1*
+%ifarch %{ix86}
 %dir %{jredir}/lib/locale
 %lang(de) %{jredir}/lib/locale/de
 %lang(de) %{_datadir}/locale/de/LC_MESSAGES/sunw_java_plugin.mo
@@ -746,19 +800,10 @@ fi
 %lang(zh_CN) %{_datadir}/locale/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
 %lang(zh_TW) %{_datadir}/locale/zh_TW/LC_MESSAGES/sunw_java_plugin.mo
 %endif
-%ifarch %{x8664}
-%attr(755,root,root) %{jredir}/lib/amd64/motif21/libmawt.so
-%attr(755,root,root) %{jredir}/lib/amd64/xawt/libmawt.so
-%endif
-%{_mandir}/man1/policytool.1*
 %ifarch %{ix86}
 %lang(ja) %{_mandir}/ja/man1/javaws.1*
 %endif
 %lang(ja) %{_mandir}/ja/man1/policytool.1*
-%ifarch %{ix86}
-%dir %{jredir}/javaws
-%attr(755,root,root) %{jredir}/javaws/javaws
-%endif
 
 %files jre-alsa
 %defattr(644,root,root,755)
