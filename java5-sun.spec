@@ -27,8 +27,8 @@ BuildRequires:	rpm-build >= 4.3-0.20040107.21
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.357
 BuildRequires:	unzip
-Requires:	%{name}-jre = %{version}-%{release}
 Requires:	%{name}-jdk-base = %{version}-%{release}
+Requires:	%{name}-jre = %{version}-%{release}
 Provides:	j2sdk = %{version}
 Provides:	jdk = %{version}
 Obsoletes:	blackdown-java-sdk
@@ -116,9 +116,10 @@ Ten pakiet zawiera pliki JDBC dla Javy Suna.
 Summary:	Sun JRE (Java Runtime Environment) for Linux
 Summary(pl.UTF-8):	Sun JRE - środowisko uruchomieniowe Javy dla Linuksa
 Group:		Development/Languages/Java
-Requires:	%{name}-tools = %{version}-%{release}
 Requires:	%{name}-jre-base = %{version}-%{release}
+Requires:	%{name}-tools = %{version}-%{release}
 Requires:	jpackage-utils
+Suggests:	%{name}-jre-X11
 Provides:	j2re = %{version}
 Provides:	jaas = %{version}
 Provides:	java
@@ -151,7 +152,6 @@ Obsoletes:	jndi-provider-ldap
 Obsoletes:	jndi-provider-rmiregistry
 Obsoletes:	jre
 Obsoletes:	jsse
-Suggests:	%{name}-jre-X11
 
 %description jre
 This package symlinks Java SUN runtime environment tools provided by
