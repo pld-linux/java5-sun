@@ -566,8 +566,6 @@ fi
 
 %files jre-base
 %defattr(644,root,root,755)
-%{_jvmdir}/jre
-%{_jvmjardir}/jre
 %attr(755,root,root) %{_bindir}/java
 %attr(755,root,root) %{_bindir}/java_vm
 %attr(755,root,root) %{_bindir}/keytool
@@ -692,6 +690,8 @@ fi
 %doc jre/{CHANGES,COPYRIGHT,LICENSE,README,*.txt}
 %doc jre/Welcome.html
 %doc jre/Xusage*
+%{_jvmdir}/jre
+%{_jvmjardir}/jre
 %{_mandir}/man1/java.1*
 %ifarch %{ix86}
 %{_desktopdir}/sun_java.desktop
