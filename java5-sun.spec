@@ -55,10 +55,16 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreqdep	libjava.so libjvm.so
 
 %description
-Java Development Kit for Linux.
+This package symlinks Java SUN development tools provided by
+java5-sun-jdk-base to system-wide directories like /usr/bin, making
+Java SUN default JDK.
 
 %description -l pl.UTF-8
-Środowisko programistyczne Javy dla Linuksa.
+Ten pakiet tworzy symboliczne dowiązania do narzędzi programistycznych
+uruchomieniowego Java SUN, dostarczanych przez pakiet
+java5-sun-jdk-base, w standardowych systemowych ścieżkach takich jak
+/usr/bin, sprawiając tym samym, że Java SUN staje się domyślnym JDK w
+systemie.
 
 %package appletviewer
 Summary:	Java applet viewer from Sun Java
@@ -148,12 +154,16 @@ Obsoletes:	jsse
 Suggests:	%{name}-jre-X11
 
 %description jre
-Java Runtime Environment for Linux. Does not contain any X11-related
-compontents.
+This package symlinks Java SUN runtime environment tools provided by
+java5-sun-jre-base to system-wide directories like /usr/bin, making
+Java SUN default JRE.
 
 %description jre -l pl.UTF-8
-Środowisko uruchomieniowe Javy dla Linuksa. Nie zawiera żadnych
-elementów związanych ze środowiskiem X11.
+Ten pakiet tworzy symboliczne dowiązania do narzędzi środowiska
+uruchomieniowego Java SUN, dostarczanych przez pakiet
+java5-sun-jre-base, w standardowych systemowych ścieżkach takich jak
+/usr/bin, sprawiając tym samym, że Java SUN staje się domyślnym JRE w
+systemie.
 
 %package jre-base
 Summary:	Sun JRE (Java Runtime Environment) for Linux
@@ -181,11 +191,15 @@ Provides:	javaws = %{version}
 %endif
 
 %description jre-X11
-X11-related part of Java Runtime Environment for Linux.
+This package symlinks Java SUN X11 libraries provided by
+java5-sun-jre-base-X11 to system-wide directories like /usr/bin,
+making Java SUN default JRE-X11.
 
 %description jre-X11 -l pl.UTF-8
-Środowisko uruchomieniowe Javy dla Linuksa, część związana ze
-środowiskiem graficznym X11.
+Ten pakiet tworzy symboliczne dowiązania do narzędzi X11 Java SUN,
+dostarczanych przez pakiet java5-sun-jre-base-X11, w standardowych
+systemowych ścieżkach takich jak /usr/bin, sprawiając tym samym, że
+Java SUN staje się domyślnym JRE-X11 w systemie.
 
 %package jre-base-X11
 Summary:	Sun JRE (Java Runtime Environment) for Linux, X11 related parts
