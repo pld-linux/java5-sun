@@ -50,7 +50,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoprov	'\\.\\./.*' '/export/.*'
 # these with SUNWprivate.* are found as required, but not provided
 # the rest is because -jdbc wants unixODBC-devel(?)
-%define		_noautoreq	'libjava.so(SUNWprivate_1.1)' 'libnet.so(SUNWprivate_1.1)' 'libverify.so(SUNWprivate_1.1)' 'libodbcinst.so' 'libodbc.so' 'libjava_crw_demo_g\.so.*' 'libmawt.so'
+%define		_noautoreq	'libjava.so(SUNWprivate_1.1)' 'libnet.so(SUNWprivate_1.1)' 'libverify.so(SUNWprivate_1.1)' 'libodbcinst.so' 'libodbc.so' 'libjava_crw_demo_g\.so.*' 'libmawt.so' 'java(ClassDataVersion)'
 # don't depend on other JRE/JDK installed on build host
 %define		_noautoreqdep	libjava.so libjvm.so
 
@@ -145,7 +145,7 @@ Obsoletes:	jndi-provider-ldap
 Obsoletes:	jndi-provider-rmiregistry
 Obsoletes:	jre
 Obsoletes:	jsse
-Suggests:	%{name}-X11
+Suggests:	%{name}-jre-X11
 
 %description jre
 Java Runtime Environment for Linux. Does not contain any X11-related
