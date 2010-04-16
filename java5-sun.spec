@@ -729,9 +729,6 @@ fi
 %attr(755,root,root) %{jredir}/bin/javaws
 %attr(755,root,root) %{jredir}/bin/ControlPanel
 %endif
-%ifarch %{ix86}
-%attr(755,root,root) %{jredir}/bin/java_vm
-%endif
 %attr(755,root,root) %{jredir}/bin/policytool
 %{jredir}/lib/fonts
 %{jredir}/lib/oblique-fonts
@@ -779,6 +776,7 @@ fi
 %defattr(644,root,root,755)
 %ifarch %{ix86}
 %attr(755,root,root) %{_bindir}/ControlPanel
+%attr(755,root,root) %{jredir}/bin/java_vm
 %endif
 %attr(755,root,root) %{_bindir}/policytool
 %{_mandir}/man1/policytool.1*
