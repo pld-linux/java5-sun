@@ -566,16 +566,6 @@ fi
 
 %files jre-base
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/java
-%attr(755,root,root) %{_bindir}/java_vm
-%attr(755,root,root) %{_bindir}/keytool
-%attr(755,root,root) %{_bindir}/jkinit
-%attr(755,root,root) %{_bindir}/jklist
-%attr(755,root,root) %{_bindir}/ktab
-%attr(755,root,root) %{_bindir}/orbd
-%attr(755,root,root) %{_bindir}/rmid
-%attr(755,root,root) %{_bindir}/servertool
-%attr(755,root,root) %{_bindir}/tnameserv
 %attr(755,root,root) %{jredir}/bin/pack200
 %attr(755,root,root) %{jredir}/bin/unpack200
 %attr(755,root,root) %{javadir}/bin/pack200
@@ -695,6 +685,16 @@ fi
 %doc jre/{CHANGES,COPYRIGHT,LICENSE,README,*.txt}
 %doc jre/Welcome.html
 %doc jre/Xusage*
+%attr(755,root,root) %{_bindir}/java
+%attr(755,root,root) %{_bindir}/java_vm
+%attr(755,root,root) %{_bindir}/keytool
+%attr(755,root,root) %{_bindir}/jkinit
+%attr(755,root,root) %{_bindir}/jklist
+%attr(755,root,root) %{_bindir}/ktab
+%attr(755,root,root) %{_bindir}/orbd
+%attr(755,root,root) %{_bindir}/rmid
+%attr(755,root,root) %{_bindir}/servertool
+%attr(755,root,root) %{_bindir}/tnameserv
 %{_jvmdir}/jre
 %{_jvmjardir}/jre
 %{_mandir}/man1/java.1*
