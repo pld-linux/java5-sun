@@ -331,11 +331,11 @@ cp -rf bin sample demo include lib $RPM_BUILD_ROOT%{javadir}
 install man/man1/* $RPM_BUILD_ROOT%{_mandir}/man1
 install man/ja/man1/* $RPM_BUILD_ROOT%{_mandir}/ja/man1
 
-if test -f jre/lib/i386/client/Xusage.txt ; then
-mv -f jre/lib/i386/client/Xusage.txt jre/Xusage.client
+if test -f jre/lib/*/client/Xusage.txt ; then
+mv -f jre/lib/*/client/Xusage.txt jre/Xusage.client
 fi
-if test -f jre/lib/i386/server/Xusage.txt ; then
-mv -f jre/lib/i386/server/Xusage.txt jre/Xusage.server
+if test -f jre/lib/*/server/Xusage.txt ; then
+mv -f jre/lib/*/server/Xusage.txt jre/Xusage.server
 fi
 if test -f jre/lib/*.txt ; then
 mv -f jre/lib/*.txt jre
