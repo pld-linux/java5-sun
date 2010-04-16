@@ -684,6 +684,11 @@ fi
 %{jredir}/lib/management/jmxremote.password.template
 %{jredir}/lib/management/management.properties
 %{jredir}/lib/management/snmp.acl.template
+%dir %{jredir}/lib/deploy
+%{jredir}/lib/deploy/ffjcext.zip
+%dir %{jredir}/lib/servicetag
+%{jredir}/lib/servicetag/jdk_header.png
+
 
 %files jre
 %defattr(644,root,root,755)
@@ -798,6 +803,7 @@ fi
 %lang(zh_HK) %{jredir}/lib/locale/zh_HK*
 %lang(zh_TW) %{jredir}/lib/locale/zh_TW*
 %lang(zh_CN) %{_datadir}/locale/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
+%lang(zh_HK) %{_datadir}/locale/zh_CN/LC_MESSAGES/sunw_java_plugin.mo
 %lang(zh_TW) %{_datadir}/locale/zh_TW/LC_MESSAGES/sunw_java_plugin.mo
 %endif
 %ifarch %{ix86}
