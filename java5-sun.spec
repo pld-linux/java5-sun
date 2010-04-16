@@ -1,8 +1,8 @@
 # TODO:
 # - package? /usr/lib/jvm/java-sun-1.5.0.12/jre/lib/deploy/ffjcext.zip
 #
-%define		_ver	1.5.0.19
-%define		_src_ver	5.0u19
+%define		_ver	1.5.0.22
+%define		_src_ver	5.0u22
 %define		_dir_ver	%(echo %{_ver}|sed 's/\\.\\(..\\)$/_\\1/')
 # class data version seen with file(1) that this jvm is able to load
 %define		_classdataversion 49.0
@@ -15,9 +15,9 @@ Release:	1
 License:	restricted, distributable
 Group:		Development/Languages/Java
 Source0:	http://download.java.net/dlj/binaries/jdk-%{_src_ver}-dlj-linux-i586.bin
-# Source0-md5:	2e2db12a21c395e8d831cb795e0489a4
+# Source0-md5:	f3afc43863c8f529a81fe42bef912d8c
 Source1:	http://download.java.net/dlj/binaries/jdk-%{_src_ver}-dlj-linux-amd64.bin
-# Source1-md5:	027c613964bc84188214df3f37fa39d3
+# Source1-md5:	d70398b2d6c1bd764330b7a3276c1e41
 Source2:	Test.java
 Patch0:		%{name}-ControlPanel-fix.patch
 Patch1:		%{name}-desktop.patch
