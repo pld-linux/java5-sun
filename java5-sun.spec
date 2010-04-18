@@ -427,9 +427,9 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/{ko.UTF-8,zh.GBK,zh_TW.BIG5}
 cp -a src.zip $RPM_BUILD_ROOT%{_prefix}/src/%{name}-sources
 
 ln -s %{javareldir} $RPM_BUILD_ROOT%{_jvmdir}/java
-ln -s %{javareldir} $RPM_BUILD_ROOT%{_jvmdir}/java-sun
+ln -s %{javareldir} $RPM_BUILD_ROOT%{_jvmdir}/%{name}
 ln -s %{jrereldir} $RPM_BUILD_ROOT%{_jvmdir}/jre
-ln -s %{jrereldir} $RPM_BUILD_ROOT%{_jvmdir}/java-sun-jre
+ln -s %{jrereldir} $RPM_BUILD_ROOT%{_jvmdir}/%{name}-jre
 ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/java
 ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_jvmjardir}/jre
 
