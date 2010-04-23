@@ -11,7 +11,7 @@ Summary:	Sun JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Sun JDK - środowisko programistyczne Javy dla Linuksa
 Name:		java5-sun
 Version:	%{_ver}
-Release:	1
+Release:	2
 License:	restricted, distributable
 Group:		Development/Languages/Java
 Source0:	http://download.java.net/dlj/binaries/jdk-%{_src_ver}-dlj-linux-i586.bin
@@ -82,7 +82,6 @@ Ten pakiet zawiera przeglądarkę appletów dla Javy Suna.
 Summary:	Sun JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Sun JDK - środowisko programistyczne Javy dla Linuksa
 Group:		Development/Languages/Java
-Requires:	%{name}-tools = %{version}-%{release}
 Requires:	jpackage-utils >= 0:1.6.6-14
 Provides:	jdk(%{name})
 
