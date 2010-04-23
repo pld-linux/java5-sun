@@ -457,10 +457,8 @@ fi
 %doc COPYRIGHT LICENSE README.html THIRDPARTYLICENSEREADME.txt
 %{_jvmdir}/java
 %{_jvmjardir}/java
-%ifarch %{ix86}
 %attr(755,root,root) %{_bindir}/HtmlConverter
 %attr(755,root,root) %{_bindir}/java-rmi.cgi
-%endif
 %attr(755,root,root) %{_bindir}/extcheck
 %attr(755,root,root) %{_bindir}/idlj
 %attr(755,root,root) %{_bindir}/jarsigner
@@ -688,8 +686,10 @@ fi
 %{jredir}/lib/management/jmxremote.password.template
 %{jredir}/lib/management/management.properties
 %{jredir}/lib/management/snmp.acl.template
+%ifarch %{ix86}
 %dir %{jredir}/lib/deploy
 %{jredir}/lib/deploy/ffjcext.zip
+%endif
 %dir %{jredir}/lib/servicetag
 %{jredir}/lib/servicetag/jdk_header.png
 
@@ -751,6 +751,8 @@ fi
 %dir %{jredir}/lib/i386/motif21
 %attr(755,root,root) %{jredir}/lib/i386/awt_robot
 %attr(755,root,root) %{jredir}/lib/i386/libjavaplugin*.so
+%attr(755,root,root) %{jredir}/lib/i386/motif21/libmawt.so
+%attr(755,root,root) %{jredir}/lib/i386/xawt/libmawt.so
 %endif
 %ifarch %{x8664}
 %dir %{jredir}/lib/amd64
@@ -760,9 +762,6 @@ fi
 %endif
 %ifarch %{ix86}
 %{jvmjardir}/javaws.jar
-%endif
-%attr(755,root,root) %{jredir}/lib/i386/motif21/libmawt.so
-%attr(755,root,root) %{jredir}/lib/i386/xawt/libmawt.so
 %dir %{jredir}/lib/javaws
 %{jredir}/lib/javaws/Java1.5.ico
 %{jredir}/lib/javaws/messages.properties
@@ -777,6 +776,7 @@ fi
 %{jredir}/lib/javaws/messages_zh_HK.properties
 %{jredir}/lib/javaws/messages_zh_TW.properties
 %{jredir}/lib/javaws/miniSplash.jpg
+%endif
 %ifarch %{x8664}
 %attr(755,root,root) %{jredir}/lib/amd64/motif21/libmawt.so
 %attr(755,root,root) %{jredir}/lib/amd64/xawt/libmawt.so
@@ -788,8 +788,8 @@ fi
 
 %files jre-X11
 %defattr(644,root,root,755)
-%ifarch %{ix86}
 %attr(755,root,root) %{_bindir}/ControlPanel
+%ifarch %{ix86}
 %attr(755,root,root) %{jredir}/bin/java_vm
 %endif
 %attr(755,root,root) %{_bindir}/policytool
