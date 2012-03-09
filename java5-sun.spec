@@ -11,7 +11,7 @@ Summary:	Sun JDK (Java Development Kit) for Linux
 Summary(pl.UTF-8):	Sun JDK - środowisko programistyczne Javy dla Linuksa
 Name:		java5-sun
 Version:	%{_ver}
-Release:	3
+Release:	4
 License:	restricted, distributable
 Group:		Development/Languages/Java
 Source0:	http://download.java.net/dlj/binaries/jdk-%{_src_ver}-dlj-linux-i586.bin
@@ -49,8 +49,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # rpm doesn't like strange version definitions provided by Sun's libs
 %define		_noautoprov	'\\.\\./.*' '/export/.*'
 # these with SUNWprivate.* are found as required, but not provided
-# the rest is because -jdbc wants unixODBC-devel(?)
-%define		_noautoreq	'libjava.so(SUNWprivate_1.1)' 'libnet.so(SUNWprivate_1.1)' 'libverify.so(SUNWprivate_1.1)' 'libodbcinst.so' 'libodbc.so' 'libjava_crw_demo_g\.so.*' 'libmawt.so' 'java(ClassDataVersion)'
+%define		_noautoreq	'libjava.so(SUNWprivate_1.1)' 'libnet.so(SUNWprivate_1.1)' 'libverify.so(SUNWprivate_1.1)' 'libjava_crw_demo_g\.so.*' 'libmawt.so' 'java(ClassDataVersion)'
 # don't depend on other JRE/JDK installed on build host
 %define		_noautoreqdep	libjava.so libjvm.so
 
@@ -96,13 +95,6 @@ Summary:	JDBC files for Sun Java
 Summary(pl.UTF-8):	Pliki JDBC dla Javy Suna
 Group:		Development/Languages/Java
 Requires:	%{name}-jre-base = %{version}-%{release}
-%ifarch %{x8664}
-Requires:	libodbc.so.1()(64bit)
-Requires:	libodbcinst.so.1()(64bit)
-%else
-Requires:	libodbc.so.1
-Requires:	libodbcinst.so.1
-%endif
 Provides:	%{name}-jdbc
 Obsoletes:	java-sun-jdbc
 
