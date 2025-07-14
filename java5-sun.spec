@@ -300,10 +300,10 @@ cd ..
 %endif
 cd -
 %ifnarch %{x8664}
-%patch0 -p1
+%patch -P0 -p1
 # patch only copy of the desktop file, leave original unchanged
 cp jre/plugin/desktop/sun_java.desktop .
-%patch1 -p1
+%patch -P1 -p1
 %endif
 
 # unpack packed jar files -- in %%prep as it is done "in place"
